@@ -8,9 +8,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class GitProfilePage {
     private final SelenideElement gender = $x("//span[@class='p-nickname vcard-username d-block']");
-    private final SelenideElement positiveNumberOfRepositories = $x("//span[@title='9']");
+    private final SelenideElement numberOfRepositories = $x("//span[@title='9']");
     private final SelenideElement locationCity = $x("//span[@class='p-label']");
-    private final SelenideElement positiveNumberOfContribution = $x("//h2[@class='f4 text-normal mb-2']");
+    private final SelenideElement numberOfContribution = $x("//h2[@class='f4 text-normal mb-2']");
     private final SelenideElement readyToRelocate = $x("//div[@data-bio-text='Ready to relocate']");
 
     public final static String GENDER = "Gender";
@@ -26,9 +26,9 @@ public class GitProfilePage {
     public Map<String, Object> getActualAttributes() {
         return new HashMap<>() {{
             put(GENDER, getGender());
-            put(POSITIVE_NUMBER_OF_REPOSITORIES, getPositiveNumberOfRepositories());
+            put(POSITIVE_NUMBER_OF_REPOSITORIES, getNumberOfRepositories());
             put(LOCATION_CITY, getLocationCity());
-            put(POSITIVE_NUMBER_OF_CONTRIBUTION, getPositiveNumberOfContribution());
+            put(POSITIVE_NUMBER_OF_CONTRIBUTION, getNumberOfContribution());
             put(READY_YO_RELOCATE, getReadyToRelocate());
         }};
     }
@@ -37,8 +37,8 @@ public class GitProfilePage {
         return gender.getText().equals("EvgenyTreskin") ? "Male" : null;
     }
 
-    public boolean getPositiveNumberOfRepositories() {
-        return Integer.parseInt(positiveNumberOfRepositories.getText()) > 0;
+    public boolean getNumberOfRepositories() {
+        return Integer.parseInt(numberOfRepositories.getText()) > 0;
     }
 
     public String getLocationCity() {
@@ -46,8 +46,8 @@ public class GitProfilePage {
         return array[0];
     }
 
-    public boolean getPositiveNumberOfContribution() {
-        String[] array = positiveNumberOfContribution.getText().split(" ");
+    public boolean getNumberOfContribution() {
+        String[] array = numberOfContribution.getText().split(" ");
         return Integer.parseInt(array[0]) > 0;
     }
 
