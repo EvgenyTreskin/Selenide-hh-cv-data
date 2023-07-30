@@ -1,7 +1,6 @@
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,13 +26,18 @@ public class GitProfileTest extends BaseTest {
     @Test
     public void checkAttributesClass(){
         GitProfilePage gitProfilePage = new GitProfilePage(URL);
+
         Profile expectedAttributes = new Profile("Male", true, "Nizhny Novgorod",
                 true, true);
+
         Profile actualAttributes = new Profile(gitProfilePage.getGender(), gitProfilePage.getNumberOfRepositories(),
                 gitProfilePage.getLocationCity(), gitProfilePage.getNumberOfContribution(),
                 gitProfilePage.getReadyToRelocate());
+
         Assertions.assertTrue(EqualsBuilder.reflectionEquals(expectedAttributes, actualAttributes));
-        Assertions.assertEquals(expectedAttributes.getGender(), actualAttributes.getGender());
+
+        Assertions.assertEquals(expectedAttributes.getGender(),
+                actualAttributes.getGender());
         Assertions.assertEquals(expectedAttributes.getNumberOfRepositories(),
                 actualAttributes.getNumberOfRepositories());
         Assertions.assertEquals(expectedAttributes.getLocationCity(),

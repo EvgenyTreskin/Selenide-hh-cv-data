@@ -1,9 +1,7 @@
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public class GitProfilePage {
