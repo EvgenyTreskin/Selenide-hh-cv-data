@@ -10,7 +10,10 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+        <junit-platform-surefire-provider.version>1.1.0</junit-platform-surefire-provider.version>
         <aspectj.version>1.8.10</aspectj.version>
+        <allure-junit5.version>2.23.0</allure-junit5.version>
         <allure-maven.version>2.12.0</allure-maven.version>
     </properties>
     <dependencies>
@@ -61,7 +64,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
-            <version>2.23.0</version>
+            <version>${allure-junit5.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -71,7 +74,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <argLine>
@@ -81,6 +84,10 @@
                         <property>
                             <name>junit.jupiter.extensions.autodetection.enabled</name>
                             <value>true</value>
+                        </property>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
                         </property>
                     </systemProperties>
                 </configuration>
@@ -102,7 +109,7 @@
                 <artifactId>allure-maven</artifactId>
                 <version>${allure-maven.version}</version>
                 <configuration>
-                    <reportVersion>2.4.1</reportVersion>
+                    <reportVersion>${allure-maven.version}</reportVersion>
                 </configuration>
             </plugin>
         </plugins>
