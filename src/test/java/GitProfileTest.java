@@ -1,5 +1,6 @@
 import com.codeborne.selenide.logevents.SelenideLogger;
-import lombok.extern.slf4j.Slf4j;
+import io.qameta.allure.selenide.AllureSelenide;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 
-@Slf4j
+//@Slf4j
 public class GitProfileTest extends BaseTest {
 
     private final static String URL = "https://github.com/EvgenyTreskin";
@@ -29,9 +30,9 @@ public class GitProfileTest extends BaseTest {
         Map<String, Object> expectedAttributes = getExpectedAttributes();
         Map<String, Object> actualAttributes = gitProfilePage.getActualAttributes();
         Assertions.assertEquals(expectedAttributes, actualAttributes);
-        log.info("Test log info");
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .enableLogs((LogType.BROWSER), Level.SEVERE));
+                .enableLogs(io.qameta.allure.selenide.LogType.BROWSER, Level.SEVERE));
     }
     @Test
     public void checkAttributesClass(){
