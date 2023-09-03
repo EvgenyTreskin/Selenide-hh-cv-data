@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 
-//@Slf4j
+
 public class GitProfileTest extends BaseTest {
 
     private final static String URL = "https://github.com/EvgenyTreskin";
@@ -25,7 +25,7 @@ public class GitProfileTest extends BaseTest {
         }};
     }
     @Test
-    public void checkAttributesHashMap() throws InterruptedException {
+    public void testCheckAttributesHashMap() throws InterruptedException {
         GitProfilePage gitProfilePage = new GitProfilePage(URL);
         Map<String, Object> expectedAttributes = getExpectedAttributes();
         Map<String, Object> actualAttributes = gitProfilePage.getActualAttributes();
@@ -35,7 +35,7 @@ public class GitProfileTest extends BaseTest {
                 .enableLogs(io.qameta.allure.selenide.LogType.BROWSER, Level.SEVERE));
     }
     @Test
-    public void checkAttributesClass(){
+    public void testCheckAttributesClass(){
         GitProfilePage gitProfilePage = new GitProfilePage(URL);
 
         Profile expectedAttributes = new Profile("Male", true, "Nizhny Novgorod",
